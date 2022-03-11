@@ -12,8 +12,7 @@ void setup(){
 }
 
 void loop(){
-  if(Kartu.PICC_IsNewCardPresent())
-  {
+  if(Kartu.PICC_IsNewCardPresent()){
     if(Kartu.PICC_ReadCardSerial()){
       Serial.print("Tag UID:");
       for(byte i = 0; i < mfrc522.uid.size; i++){
@@ -21,7 +20,7 @@ void loop(){
           Serial.print(mfrc522.uid.uidByte[i], HEX);
     }
     Serial.println();
-    mfrc522.PICC_HaltA();
+    Kartu.PICC_HaltA();
   }
 }
 }
